@@ -1,0 +1,9 @@
+use restdb;
+
+create table department(
+id int NOT NULL AUTO_INCREMENT,
+name varchar(20),
+PRIMARY KEY (ID)
+);
+
+select * from department;
