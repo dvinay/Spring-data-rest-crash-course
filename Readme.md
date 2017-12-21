@@ -47,8 +47,8 @@ spring.datasource.username=root
 spring.datasource.password=root
 ```
 - Run the project as Spring boot application and request http://localhost:8080/
-[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/0a55710281fa3f3795b25d114c586e2b86f3e60e)
-
+- [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/0a55710281fa3f3795b25d114c586e2b86f3e60e)
+- Note: Spring Data Rest is not expose id filed, to expose id field create a get method in entity
 
 
 
