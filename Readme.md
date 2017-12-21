@@ -34,7 +34,7 @@
 	- extend an interface CrudRepository; which provides data access method
 - Spring Data Rest is like a wrapper on spring data with controllers
 
-##### How to create a REST api's using spring data rest #####
+#### How to create a REST api's using spring data rest ####
 - Create a spring starter project in https://start.spring.io/ or STS IDE with JPA, REST Repositories and corresponding database connection dependencies.
 - Note: In this project I have used mysql as database
 - Create a entity bean with required annotations @Entity and @Id
@@ -47,7 +47,7 @@ spring.datasource.username=root
 spring.datasource.password=root
 ```
 - Run the project as Spring boot application and request http://localhost:8080/
-
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/0a55710281fa3f3795b25d114c586e2b86f3e60e)
 
 
 
