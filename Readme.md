@@ -91,6 +91,15 @@ public class EventmanagementApiApplication {
 - PagingAndSortingRepository contains the CrudRepository functions; if your repository interface has extended PagingAndSortingRepository no need to extend CrudRepository
 - to test paging and sorting; add records more than 20 and hit the get request. It will give self and next last page HATEOS
 [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/b5547066d44e802caca9dc4a81f83dc82228deb0)
+- Spring data rest defaultly takes 20 objects as a page size; we can change by setting spring.data.rest.default-page-size property
+- Sort the response; we need to pass sort query parameter with data like
+http://localhost:8080/eventmanagement-api/events?sort=id,desc
+http://localhost:8080/eventmanagement-api/events?sort=id,desc,sort=name
+- Spring data rest provides the result in json where key in the class definition order; to format the json key order @JsonPropertyOrder({"name"})
+
+
+
+
 
 
 

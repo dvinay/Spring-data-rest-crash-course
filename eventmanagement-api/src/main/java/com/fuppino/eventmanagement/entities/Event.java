@@ -15,7 +15,9 @@ import javax.persistence.OneToMany;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"name"})
 @Entity
 public class Event extends AbstractEntity {
 
@@ -24,6 +26,7 @@ public class Event extends AbstractEntity {
 	private ZonedDateTime startTime;
 	private ZonedDateTime endTime;
 	private ZoneId zoneId;
+	@JsonIgnore
 	private Boolean started;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
