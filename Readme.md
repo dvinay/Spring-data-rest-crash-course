@@ -85,9 +85,11 @@ public class EventmanagementApiApplication {
 - For testing eventmanagement-api
 [res](https://github.com/dvinay/Spring-data-rest-crash-course/commit/7cd97e885a38310b1a3bc8c693b489336f180adc#diff-01324a1bb7599f15b7ef76ab44be9581)
 
+### Paging and Sorting for micro service results ###
 
-
-
+- Spring data rest provides a interface called PagingAndSortingRepository which provides the paging and sorting features.
+- PagingAndSortingRepository contains the CrudRepository functions; if your repository interface has extended PagingAndSortingRepository no need to extend CrudRepository
+- to test paging and sorting; add records more than 20 and hit the get request. It will give self and next last page HATEOS
 
 
 
