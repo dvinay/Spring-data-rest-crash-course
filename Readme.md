@@ -100,6 +100,9 @@ http://localhost:8080/eventmanagement-api/events?sort=id,desc,sort=name
 - e.g: /search/findByName?name=data
 - add List<Event> findByName(@Param("name") String name); method in EventRepository interface
 - request the url http://localhost:8080/eventmanagement-api/events/search/findByName?name=Rest Training2
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/b03f49631ab6683ef47a5a22c8629d60198227f9)
+- To add paging to findByName; change the return type and include Pagable as a parameter
+- Replace List<Event> findByName(@Param("name") String name); as Page<Event> findByName(@Param("name") String name, Pageable pageable);;
 
 
 
