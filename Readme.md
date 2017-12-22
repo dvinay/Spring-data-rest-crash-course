@@ -102,9 +102,31 @@ http://localhost:8080/eventmanagement-api/events?sort=id,desc,sort=name
 - request the url http://localhost:8080/eventmanagement-api/events/search/findByName?name=Rest Training2
 [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/b03f49631ab6683ef47a5a22c8629d60198227f9)
 - To add paging to findByName; change the return type and include Pagable as a parameter
-- Replace List<Event> findByName(@Param("name") String name); as Page<Event> findByName(@Param("name") String name, Pageable pageable);;
+- Replace List<Event> findByName(@Param("name") String name); as Page<Event> findByName(@Param("name") String name, Pageable pageable);
 
-
+### How to create custom controller ###
+- Spring data rest provides default rest methods; if we want to implement our own business logic or own controller we need create Rest controllers with @RepositoryRestController and @RequestMapping
+```JAVA
+@RepositoryRestController
+@RequestMapping("/events")
+public class EventKickOffController {
+	@Autowired
+	EventRepository eventRepository;
+	
+	@PostMapping("/start/{id}")
+	public ResponseEntity start(@PathVariable("id") Long id) {
+		Event event = eventRepository.findOne(id);
+		if(event==null) {
+			throw new ResourceNotFoundException();
+		}
+		event.setStarted(true);
+		eventRepository.save(event);
+		
+		return ResponseEntity.ok(event.getName() + " has started");
+	}
+}
+```
+- difference between @RepositoryRestController and @RestController is, RepositoryRestController sync with the spring provides rest links and operations; it derives the base path and become part of spring, whereas RestController provides a separate api
 
 
 

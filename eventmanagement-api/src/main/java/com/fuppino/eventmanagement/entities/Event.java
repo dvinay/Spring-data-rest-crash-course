@@ -26,7 +26,6 @@ public class Event extends AbstractEntity {
 	private ZonedDateTime startTime;
 	private ZonedDateTime endTime;
 	private ZoneId zoneId;
-	@JsonIgnore
 	private Boolean started;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
