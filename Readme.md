@@ -148,7 +148,7 @@ public ResponseEntity<PersistentEntityResource> checkIn(@PathVariable("id") Long
 	return ResponseEntity.ok(assembler.toResource(participant));
 }
 ```
-
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/77a019223065eb9dcc9792bc14e70a9357931e60)
 
 
 
