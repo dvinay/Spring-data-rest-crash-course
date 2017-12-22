@@ -51,8 +51,36 @@ spring.datasource.password=root
 - Note: Spring Data Rest is not expose id filed, to expose id field create a get method in entity [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/f6bef7860e4657cabccecf6e2eba9e1aed3d55f3#diff-acbe2b7d5ad2185133aa02f9d5c6d8a4)
 - To customize the application context path set server.context-path properties value
 - e.g: set server.context-path=server.context-path properties and hit http://localhost:8080/employee-api/
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/2eded407dfb9b182e9eb662fdea96f78ef7bcfb6)
 
+- To enable java.time.* in your project; you have to enable the following dependencies
+	- Upgrade hibernate version
+		- Springboot uses default hibernate 5.0.1 version package; override the version by using
+```XML
+<hibernate.version>5.2.10.Final</hibernate.version>
+```
+	- Add Jackson JSR310 dependency
+```XML
+<dependency>
+    <groupId>com.fasterxml.jackson.datatype</groupId>
+    <artifactId>jackson-datatype-jsr310</artifactId>
+    <version>2.8.7</version>
+</dependency>
+```
+	- And update the converter
+		- JSR310 classes support to serialize and de-serialize the java.time.ZonedTime
+		- We have to add @EntityScan annotation with basepackageclasses or basePackage
+```JAVA
+@SpringBootApplication
+@EntityScan(basePackageClasses= {EventmanagementApiApplication.class , Jsr310Converters.class})
+public class EventmanagementApiApplication {
 
+	public static void main(String[] args) {
+		SpringApplication.run(EventmanagementApiApplication.class, args);
+	}
+}
+
+```
 
 
 
