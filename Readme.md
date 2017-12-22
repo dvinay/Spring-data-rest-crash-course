@@ -81,6 +81,9 @@ public class EventmanagementApiApplication {
 }
 
 ```
+[res](https://github.com/dvinay/Spring-data-rest-crash-course/tree/master/eventmanagement-api)
+- For testing eventmanagement-api
+
 
 
 
