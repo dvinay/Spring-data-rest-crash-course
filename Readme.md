@@ -96,6 +96,11 @@ public class EventmanagementApiApplication {
 http://localhost:8080/eventmanagement-api/events?sort=id,desc
 http://localhost:8080/eventmanagement-api/events?sort=id,desc,sort=name
 - Spring data rest provides the result in json where key in the class definition order; to format the json key order @JsonPropertyOrder({"name"})
+- To get the response based on the request query param requires custom methods
+- e.g: /search/findByName?name=data
+- add List<Event> findByName(@Param("name") String name); method in EventRepository interface
+- request the url http://localhost:8080/eventmanagement-api/events/search/findByName?name=Rest Training2
+
 
 
 
