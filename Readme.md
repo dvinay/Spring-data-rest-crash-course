@@ -127,7 +127,27 @@ public class EventKickOffController {
 }
 ```
 - difference between @RepositoryRestController and @RestController is, RepositoryRestController sync with the spring provides rest links and operations; it derives the base path and become part of spring, whereas RestController provides a separate api
-
+- for custom rest api
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/b9ce85eebd6143302b40a8ae057d41d414415d33)
+- While returning entity as response body in our custom rest controllers; we can convert jpa entity to Rest response by using PersistentEntityResourceAssembler
+	- steps to make Jpa entity as response
+		- add PersistentEntityResourceAssembler as parameter in controller method
+		- while creating ResponseEntity; add assembler parameter toResource method
+```JAVA
+@PostMapping("/checkin/{id}")
+public ResponseEntity<PersistentEntityResource> checkIn(@PathVariable("id") Long id , PersistentEntityResourceAssembler assembler) {
+		
+	Participant participant = participantRepository.findOne(id);
+	if(participant != null) {
+		if(participant.getCheckedIn()) {
+			throw new ResourceNotFoundException();
+		}
+		participant.setCheckedIn(true);
+		participantRepository.save(participant);
+	}
+	return ResponseEntity.ok(assembler.toResource(participant));
+}
+```
 
 
 
