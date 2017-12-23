@@ -173,11 +173,22 @@ public interface PartialEventProjection {
 	public ZonedDateTime getEndTime();
 }
 ```
-- To test project hit : http://localhost:8080/eventmanagement-api/events?projection=partial
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/e56c36c31d1049e3c89b56e84420dfcf537e360b)
+- To test project hit url : http://localhost:8080/eventmanagement-api/events?projection=partial
 - It will give output with only name, start time and end time
 Note: Projections can expose the @JsonIgnore annotation also; event though a field is @JsonIgnore in entity, If we add the field name in projection.
 - To create virtual projections; combination of multiple fields as a rest result. We need to use Spring Expression Language in @Value()
+```JAVA
+@Projection(name = "virtual", types = { Venue.class })
+public interface VirtulaVenueProjection {
 
+	@Value("#{target.streetAddress} #{target.streetAddress2}")
+	public String getCombineAddress();
+
+}
+```
+- To test project hit url : http://localhost:8080/eventmanagement-api/venues?projection=virtual
+- It will give output with combined streetAddresses
 
 
 
