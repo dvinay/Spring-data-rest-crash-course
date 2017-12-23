@@ -150,7 +150,33 @@ public ResponseEntity<PersistentEntityResource> checkIn(@PathVariable("id") Long
 ```
 [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/77a019223065eb9dcc9792bc14e70a9357931e60)
 
+### Projections and Excerpts ###
+- by default spring Rest represent the view of the entity/domain model
+- By using projection, we can represent a view for a particular request based client requirement
+	- Partial projection to show part of view
+	- Hidden data to hide the part of view
+	- Virtual data; combination of set of fields in the part of view
+- Excerpts; applying a projection on Resource collections like collection of events or venues.
+- To create a Projections for a resource
+	- create an interface
+	- annotate the interface with @Projection(name="name",types={})
+	- and make abstract getter method with field name
+Note: while creating projection interfacess; make sure you have to keep it in same package of entities or sub-package of entities
+```JAVA
+//type indicate the which entity need to check for fields
+@Projection(name = "partial", types = { Event.class })
+public interface PartialEventProjection {
+	public String getName();
 
+	public ZonedDateTime getStartTime();
+
+	public ZonedDateTime getEndTime();
+}
+```
+- To test project hit : http://localhost:8080/eventmanagement-api/events?projection=partial
+- It will give output with only name, start time and end time
+Note: Projections can expose the @JsonIgnore annotation also; event though a field is @JsonIgnore in entity, If we add the field name in projection.
+- To create virtual projections; combination of multiple fields as a rest result. We need to use Spring Expression Language in @Value()
 
 
 
