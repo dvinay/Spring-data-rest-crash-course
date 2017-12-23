@@ -189,6 +189,7 @@ public interface VirtulaVenueProjection {
 ```
 - To test project hit url : http://localhost:8080/eventmanagement-api/venues?projection=virtual
 - It will give output with combined streetAddresses
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/c99464c7a46c3fa6ee242edea0692b6c9ddc5dd6)
 
 
 
