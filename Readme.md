@@ -190,8 +190,23 @@ public interface VirtulaVenueProjection {
 - To test project hit url : http://localhost:8080/eventmanagement-api/venues?projection=virtual
 - It will give output with combined streetAddresses
 [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/c99464c7a46c3fa6ee242edea0692b6c9ddc5dd6)
+- Excerpts are used for collection of resources
+	- add @RepositoryRestResource annotation to Repository interface
+	- pass projection interface as parameter to annotation
+```JAVA
+@RepositoryRestResource(excerptProjection=PartialEventProjection.class)
+public interface EventRepository extends PagingAndSortingRepository<Event, Long> {
 
+	Page<Event> findByName(@Param("name") String name, Pageable pageable);
 
+	Page<Event> findByNameAndZoneId(@Param("name") String name, @Param("zoneid") ZoneId zoneId, Pageable pageable);
+
+}
+```
+- To test project hit url : http://localhost:8080/eventmanagement-api/events
+- It will apply the excerpt and display name, starttime and endtime
+- It you hit individual element like http://localhost:8080/eventmanagement-api/events/1; it will display the complete resource without projection
+- If we want to apply projection to individual element; we need to pass projection parameter like http://localhost:8080/eventmanagement-api/events/1?projection=partial
 
 
 
