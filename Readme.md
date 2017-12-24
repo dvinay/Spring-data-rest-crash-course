@@ -208,5 +208,9 @@ public interface EventRepository extends PagingAndSortingRepository<Event, Long>
 - It you hit individual element like http://localhost:8080/eventmanagement-api/events/1; it will display the complete resource without projection
 - If we want to apply projection to individual element; we need to pass projection parameter like http://localhost:8080/eventmanagement-api/events/1?projection=partial
 
+- Spring provides a HAL browser, to create REST client browser page
+- for Spring HAL dependency add spring-data-rest-hal-browser
+- after adding dependecy; runthe project and hit the http://localhost:8080/eventmanagement-api ; it will open the HAL browser page and display the HATEOS as documentation for REST APIs
+
 
 
