@@ -253,6 +253,6 @@ protected void configure(HttpSecurity http) throws Exception {
 		.and().csrf().disable();
 }
 ```
-
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/21308f4b986db5a20b231e0309443624af3ab941)
 
 
