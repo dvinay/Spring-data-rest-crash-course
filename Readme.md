@@ -211,6 +211,7 @@ public interface EventRepository extends PagingAndSortingRepository<Event, Long>
 - Spring provides a HAL browser, to create REST client browser page
 - for Spring HAL dependency add spring-data-rest-hal-browser
 - after adding dependecy; runthe project and hit the http://localhost:8080/eventmanagement-api ; it will open the HAL browser page and display the HATEOS as documentation for REST APIs
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/df8a1af4bb3bed7d155073b512957c3cc18deb79)
 
 
 
