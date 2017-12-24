@@ -219,7 +219,7 @@ public interface EventRepository extends PagingAndSortingRepository<Event, Long>
 - Authorization, whether user is able to perform certain operation
 - Steps to secure the API
 	- Add the spring-boot-starter-security maven dependency
-	- Create a java based security configuration class which extend the WebSecurityConfigurerAdapter from spring; with in this class we will configure all the rules to access api. This step is to secure at URL level
+	- Configure Security Policy : Create a java based security configuration class which extend the WebSecurityConfigurerAdapter from spring; with in this class we will configure all the rules to access api. This step is to secure at URL level
 		- configure users and roles using configure method
 		- configure the secure links and methods by assining roles to method
 	- Secure the method level by using @EnableGlobalMethodSecurity and @PreAuthorize("hasRole('ROLE_ADMIN')"). This step is to secure at method level
@@ -230,3 +230,4 @@ public interface EventRepository extends PagingAndSortingRepository<Event, Long>
 	<artifactId>spring-boot-starter-security</artifactId>
 </dependency>
 ```
+- To configure the Security configuration; create a class which extend WebSecurityConfigurerAdapter and override configure method
