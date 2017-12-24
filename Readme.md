@@ -241,6 +241,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 }
 ```
 - To create access permission for url methods; we need to override another configure method and provide authrozation and authentication
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/21308f4b986db5a20b231e0309443624af3ab941)
 ```JAVA
 @Override
 protected void configure(HttpSecurity http) throws Exception {
@@ -253,6 +254,7 @@ protected void configure(HttpSecurity http) throws Exception {
 		.and().csrf().disable();
 }
 ```
-[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/21308f4b986db5a20b231e0309443624af3ab941)
+
+
 
 
