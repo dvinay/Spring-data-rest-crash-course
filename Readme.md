@@ -213,5 +213,20 @@ public interface EventRepository extends PagingAndSortingRepository<Event, Long>
 - after adding dependecy; runthe project and hit the http://localhost:8080/eventmanagement-api ; it will open the HAL browser page and display the HATEOS as documentation for REST APIs
 [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/df8a1af4bb3bed7d155073b512957c3cc18deb79)
 
-
-
+### Securing the Micro Services using Spring Security ###
+- in Security, two important aspects are Authorization and Authentication.
+- Authentication, user login access
+- Authorization, whether user is able to perform certain operation
+- Steps to secure the API
+	- Add the spring-boot-starter-security maven dependency
+	- Create a java based security configuration class which extend the WebSecurityConfigurerAdapter from spring; with in this class we will configure all the rules to access api. This step is to secure at URL level
+		- configure users and roles using configure method
+		- configure the secure links and methods by assining roles to method
+	- Secure the method level by using @EnableGlobalMethodSecurity and @PreAuthorize("hasRole('ROLE_ADMIN')"). This step is to secure at method level
+- To add the dependency
+```XML
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
