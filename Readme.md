@@ -232,3 +232,15 @@ public interface EventRepository extends PagingAndSortingRepository<Event, Long>
 ```
 - To configure the Security configuration; create a class which extend WebSecurityConfigurerAdapter and override configure method
 [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/8f64650ff41d2c734d9a714882dd56aca12c470b)
+- To create users and roles; we need to provide auth manager with user and roles
+in configure method
+```JAVA
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	auth.inMemoryAuthentication().withUser("user").password("user").roles("USER").and().withUser("admin").password("admin").roles("ADMIN");
+}
+```
+
+
+
+
