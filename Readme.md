@@ -231,3 +231,4 @@ public interface EventRepository extends PagingAndSortingRepository<Event, Long>
 </dependency>
 ```
 - To configure the Security configuration; create a class which extend WebSecurityConfigurerAdapter and override configure method
+[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/8f64650ff41d2c734d9a714882dd56aca12c470b)
