@@ -240,7 +240,19 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	auth.inMemoryAuthentication().withUser("user").password("user").roles("USER").and().withUser("admin").password("admin").roles("ADMIN");
 }
 ```
-
+- To create access permission for url methods; we need to override another configure method and provide authrozation and authentication
+```JAVA
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+	//http.httpBasic() -> authentication type
+	http.httpBasic()
+		.and().authorizeRequests()
+		.antMatchers(HttpMethod.POST, "/events").hasRole("ADMIN")
+		.antMatchers(HttpMethod.PUT, "/events/**").hasRole("ADMIN")
+		.antMatchers(HttpMethod.PATCH, "/events/**").hasRole("ADMIN")
+		.and().csrf().disable();
+}
+```
 
 
 
