@@ -254,6 +254,49 @@ protected void configure(HttpSecurity http) throws Exception {
 		.and().csrf().disable();
 }
 ```
+- To test this application hit Post /events and give json data as body; make basic authentication for admin userid and password admin
+- To configure the java method level security
+	- add @EnableGlobalMethodSecurity(prePostEnabled=true) at securityConfiguration class
+	- prePostEnabled=true; indicates need to check before and after invoking method
+	- add @PreAuthorize("hasRole('ROLE_ADMIN')") annotation before the method
+```JAVA
+//Configuration file
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled=true)
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("user").password("user").roles("USER").and()
+		.withUser("admin").password("admin").roles("ADMIN");
+	}
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		//http.httpBasic() -> authentication type
+		http.httpBasic()
+			.and().authorizeRequests()
+			.antMatchers(HttpMethod.POST, "/events").hasRole("ADMIN")
+			.antMatchers(HttpMethod.PUT, "/events/**").hasRole("ADMIN")
+			.antMatchers(HttpMethod.PATCH, "/events/**").hasRole("ADMIN")
+			.and().csrf().disable();
+	}
+}
+
+//Method level security in repo class
+@RepositoryRestResource(excerptProjection=PartialEventProjection.class)
+public interface EventRepository extends PagingAndSortingRepository<Event, Long> {
+
+	Page<Event> findByName(@Param("name") String name, Pageable pageable);
+
+	Page<Event> findByNameAndZoneId(@Param("name") String name, @Param("zoneid") ZoneId zoneId, Pageable pageable);
+	
+	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	void delete(Long id);
+}
+```
+
 
 
 
