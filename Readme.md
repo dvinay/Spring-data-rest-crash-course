@@ -1,6 +1,6 @@
 ## Micro Services using Spring ##
 - Small and autonomus services bounded with single context
-- Communication between services can be through network call or remote method calls or anything
+- Communication between services can be through network call or remote method calls
 - Each service expose as API
 - We can build and deploy the individual services without effecting other services
 - Micro services can be homogenous or heterogenous; you can develop the services on same language or different languages
@@ -50,7 +50,9 @@ spring.datasource.password=root
 - [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/0a55710281fa3f3795b25d114c586e2b86f3e60e)
 - Note: Spring Data Rest is not expose id filed, to expose id field create a get method in entity [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/f6bef7860e4657cabccecf6e2eba9e1aed3d55f3#diff-acbe2b7d5ad2185133aa02f9d5c6d8a4)
 - To customize the application context path set server.context-path properties value
-- e.g: set server.context-path=server.context-path properties and hit http://localhost:8080/employee-api/
+- e.g: set server.context-path=/employee-api property and hit 
+
+http://localhost:8080/employee-api/
 [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/2eded407dfb9b182e9eb662fdea96f78ef7bcfb6)
 
 - To enable java.time.* in your project; you have to enable the following dependencies
