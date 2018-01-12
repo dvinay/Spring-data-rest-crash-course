@@ -37,6 +37,7 @@
 #### How to create a REST api's using spring data rest ####
 - Create a spring starter project in https://start.spring.io/ or STS IDE with JPA, REST Repositories and corresponding database connection dependencies.
 - Note: In this project I have used mysql as database
+- Create a employee table in database
 - Create a entity bean with required annotations @Entity and @Id
 - Create a repository interface which extends CrudRepository<T, Serializable> ; which helps to generate the database query templates
 - Configure the database connection parameters
@@ -47,11 +48,11 @@ spring.datasource.username=root
 spring.datasource.password=root
 ```
 - Run the project as Spring boot application and request http://localhost:8080/
-- [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/0a55710281fa3f3795b25d114c586e2b86f3e60e)
+- Code changes [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/0a55710281fa3f3795b25d114c586e2b86f3e60e)
 - Note: Spring Data Rest is not expose id filed, to expose id field create a get method in entity [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/f6bef7860e4657cabccecf6e2eba9e1aed3d55f3#diff-acbe2b7d5ad2185133aa02f9d5c6d8a4)
 - To customize the application context path set server.context-path properties value
 - e.g: set server.context-path=/employee-api property and hit http://localhost:8080/employee-api/
-[ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/2eded407dfb9b182e9eb662fdea96f78ef7bcfb6)
+- Code changes [ref](https://github.com/dvinay/Spring-data-rest-crash-course/commit/2eded407dfb9b182e9eb662fdea96f78ef7bcfb6)
 
 - To enable java.time.* in your project; you have to enable the following dependencies
 	- Upgrade hibernate version
@@ -59,7 +60,9 @@ spring.datasource.password=root
 ```XML
 <hibernate.version>5.2.10.Final</hibernate.version>
 ```
+
 	- Add Jackson JSR310 dependency
+
 ```XML
 <dependency>
     <groupId>com.fasterxml.jackson.datatype</groupId>
